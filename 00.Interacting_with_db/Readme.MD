@@ -50,6 +50,8 @@ Answer the following questions: (the resource link can be very helpful!)
 
 You can also use a SQLite viewer to read the SQlite database and check your results.
 [http://sourceforge.net/projects/sqlitebrowser/](http://sourceforge.net/projects/sqlitebrowser/)
+
+Sqlite Manager for Firefox [https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/](https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/)
 	
 
 
