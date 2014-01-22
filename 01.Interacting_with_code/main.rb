@@ -30,7 +30,7 @@ puts "There are #{love_songs.count} love songs"
 
 
 # returns all the tracks that are longer than 5 minutes.
-query = "select name from Track where milliseconds > 60*5"
+query = "select name from Track where milliseconds > 1000*60*5"
 long_tracks = db.execute(query)
 puts "There are #{long_tracks.count} long tracks"
 
