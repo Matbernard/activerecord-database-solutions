@@ -5,25 +5,39 @@ require './models/recipe'
 
 puts "Salut Robuchon, what do you want to do today?"
 puts "1. create a recipe"
-puts "2. delete a recipe"
-puts "3. update a recipe"
-puts "4. read your recipes"
+puts "2. delete all recipes"
+puts "3. read your recipes"
 
-choice = gets.chomp
+choice = gets.chomp.to_i
 
 if choice == 1
-  # your code here to create a recipe
-  # inputs needed: name, description, length, difficulty
+  puts "name?"
+  name = gets.chomp
+  puts "description"
+  description = gets.chomp
+  puts "length"
+  length = gets.chomp.to_i
+  puts "difficulty"
+  difficulty = gets.chomp.to_i
+  
+  new_recipe = Recipe.create(:name => name,
+   :description => description,
+   :length => length,
+   :difficulty => difficulty
+   )
+   
+  puts "new recipe created with id #{new_recipe.id}"
   
 elsif choice == 2
-  # your code here to delete a recipe
-  # input needed: id of the recipe
+  Recipe.delete_all
   
 elsif choice == 3
-  # your code here to create a recipe
-  # inputs needed: id, name, description, length, difficulty
+  recipes = Recipe.all
+  recipes.each do |r|
+    puts "#{r.id}|#{r.name}|#{r.description}|#{r.length}|#{r.difficulty}"
+  end
   
-elsif choice == 4
-  # your code here to read all recipes
+else
+  puts "i did not understand"
   
 end

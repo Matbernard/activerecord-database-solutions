@@ -6,30 +6,48 @@ db = SQLite3::Database.new(db_path)
 
 # creates the schema of the database
 # your code here
-sql = ""
+sql = %q{
+  CREATE TABLE IF NOT EXISTS recipes (
+  id INTEGER PRIMARY KEY ,
+  name VARCHAR(255),
+  description VARCHAR(255),
+  length INTEGER,
+  difficulty INTEGER
+  );
+}
+
+# if database already exisits
 db.execute(sql)
-
-
 
 #*************************************
 
 # function to create a recipe
-def create_recipe(name,description,length,difficulty)
-  # your code here
+def create_recipe(db,name,description,length,difficulty)
+  q = "INSERT INTO recipes (name,description,length,difficulty) VALUES ('#{name}','#{description}',#{length},#{difficulty});"
+  return db.execute(q)
 end
 
 # function to delete a recipe
-def delete_recipe(id)
-  # your code here
+def delete_recipe(db,id)
+  q = "DELETE FROM recipes WHERE id=#{id};"
+  return db.execute(q)
 end
 
-# function to update a recipe
-def update_recipe(id,name,description,length,difficulty)
-  # your code here
+# function to delete all recipes
+def delete_all_recipes(db)
+  q = "DELETE FROM recipes;"
+  return db.execute(q)
 end
 
-def get_recipes()
-  # function to get all recipes
+# function to update a recipe description
+def update_recipe(db,id,description)
+  q = "UPDATE recipes SET description=#{name} WHERE id=#{id};"
+  return db.execute(q)
+end
+
+def get_recipes(db)
+  q = "Select * from recipes"
+  return db.execute(q).to_a.map {|m| m.join('|')}
 end
 
 
@@ -39,28 +57,36 @@ end
 
 puts "Salut Robuchon, what do you want to do today?"
 puts "1. create a recipe"
-puts "2. delete a recipe"
-puts "3. update a recipe"
-puts "4. read your recipes"
+puts "2. delete all recipes"
+puts "3. read your recipes"
 
-choice = gets.chomp
+choice = gets.chomp.to_i
 
 if choice == 1
-  # your code here to create a recipe
-  # inputs needed: name, description, length, difficulty
+  
+  puts "name?"
+  name = gets.chomp
+  puts "description"
+  description = gets.chomp
+  puts "length"
+  length = gets.chomp.to_i
+  puts "difficulty"
+  difficulty = gets.chomp.to_i
+  
+  create_recipe(db,name,description,length,difficulty)
+  puts "recipe created"
   
 elsif choice == 2
-  # your code here to delete a recipe
-  # input needed: id of the recipe
+  delete_all_recipes(db)
   
 elsif choice == 3
-  # your code here to create a recipe
-  # inputs needed: id, name, description, length, difficulty
+  puts get_recipes(db)
   
-elsif choice == 4
-  # your code here to read all recipes
+else
+  puts "i did not understand"
   
 end
+  
   
   
   

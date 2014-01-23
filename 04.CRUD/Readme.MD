@@ -25,9 +25,8 @@ Example:
 ````
 	Salut Robuchon, what do you want to do ?
 	1. create a recipe.
-	2. update a recipe.
-	3. delete a recipe.
-	4. read my recipes.
+	2. delete all recipes.
+	3. read my recipes.
 ````
 
 

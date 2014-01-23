@@ -22,6 +22,9 @@ This rake task will execute the code in `db/seed.rb`
 
 3. To check that your data migration worked, write a query in `cookbook.rb` to get the 10 most difficult recipes.
 
+
+## Extras 
+
 4. Feed the database from `CSV`. For that write another program `csv_seed.rb` that reads the recipes of `db/recipes.csv` and store them in the database.
 
 

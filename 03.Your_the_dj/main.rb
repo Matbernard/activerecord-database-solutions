@@ -4,6 +4,7 @@ require 'sqlite3'
 database_path = "db/jukebox.sqlite"
 db = SQLite3::Database.new(database_path)
 
-
 # your DJ algorithm
+
+# optional
 
