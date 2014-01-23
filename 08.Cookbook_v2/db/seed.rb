@@ -14,7 +14,7 @@ require 'faker'
 # for each user, scrape data from marmition and attach the recipes to this user
 
 10.times.each do |i|
-  u = User.create(:name => Faker::Name.name)
+  u = User.create(:name => Faker::Name.name, :email => Faker::Internet.email)
   puts u.name
   # randomly pick on ingredient from the list
   x = rand(0..ingredients.count-1)
